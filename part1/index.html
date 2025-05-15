@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quote generator homework</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    #quoteBox {
+      background: #fff;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      padding: 0.5em 1em;
+      font-size: 1rem;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      padding-top: 2em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Quote generator homework</h1>
+  <h2>Create by Asport Joris - Z125044 </h2>
+
+  <div id="quoteBox">
+    <p id="quote">Click the button to get a quote!</p>
+    <p id="author"></p>
+  </div>
+
+  <button id="newQuoteBtn">New Quote</button>²
+
+  <footer>
+    Web Design and Programming — Shibaura Institute of Technology — Spring 2025
+  </footer>
+
+  <script>
+    const quoteText = document.getElementById("quote");
+    const authorText = document.getElementById("author");
+    const newQuoteBtn = document.getElementById("newQuoteBtn");
+
+    function getQuote() {
+
+      //INPUT YOUR CODE HERE
+      //HINT: Use fetch() to get quote from "quotes.json"
+
+      let quotes = fetch(quotes.json);
+
+      let quotesArray = JSON.parse(quotes);
+
+      let number = Math.floor(Math.random() * 10);
+
+      let quoteChosen = quotesArray[number];
+      let qa = JSON.parse(quoteChosen);
+
+      quoteText.innerHTML = qa.q;
+      authorText.innerHTML = qa.a;
+    }
+    newQuoteBtn.addEventListener("click", getQuote);
+    getQuote(); // Load a quote on page load
+  </script>
+
+</body>
+
+</html>

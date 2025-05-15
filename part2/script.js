@@ -34,7 +34,7 @@ function showQuestion() {
     let button = document.createElement("button");
     button.innerText = option;
     button.classList.add("option");
-    button.addEventListener("click", checkAnswer(index));
+    button.onclick = checkAnswer(index);
     optionsContainer.appendChild(button);
   });
 }

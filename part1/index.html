@@ -59,22 +59,18 @@
     const newQuoteBtn = document.getElementById("newQuoteBtn");
 
     function getQuote() {
+      let quotes = fetch("quotes.json")
+        .then(response => response.json())
+        .then(data => {
+          let number = Math.floor(Math.random() * 10);
+          let quote = data[number];
 
-      //INPUT YOUR CODE HERE
-      //HINT: Use fetch() to get quote from "quotes.json"
+          quoteText.innerHTML = quote.q;
+          authorText.innerHTML = quote.a;
 
-      let quotes = fetch("quotes.json");
-
-      let quotesArray = JSON.parse(quotes);
-
-      let number = Math.floor(Math.random() * 10);
-
-      let quoteChosen = quotesArray[number];
-      let qa = JSON.parse(quoteChosen);
-
-      quoteText.innerHTML = qa.q;
-      authorText.innerHTML = qa.a;
+        })
     }
+
     newQuoteBtn.addEventListener("click", getQuote);
     getQuote(); // Load a quote on page load
   </script>
